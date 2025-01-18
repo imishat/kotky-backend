@@ -5,18 +5,10 @@ import { ICategory } from "./Category.interface";
 import { Category } from "./Category.model";
 import ApiError from "../../errors/ApiError";
 import httpStatus from "http-status";
-import { ParentCategory } from "../ParentCategorie/ParentCategory.model";
 
 const createCategory = async (
   payload: ICategory
 ): Promise<ICategory | null> => {
-  const { parentCategoryId } = payload;
-
-  const ParentId = await ParentCategory.findById(parentCategoryId);
-  if (!ParentId) {
-    throw new ApiError(httpStatus.NOT_FOUND, " ParentCategory-Id not found");
-  }
-
   const result = await Category.create(payload);
 
   // if (!createdUser) {

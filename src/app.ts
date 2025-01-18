@@ -21,7 +21,7 @@ app.get("/", (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: "Welcome to the API Of Leather-for-Luxury",
+    message: "Welcome to the API Of Kotoky",
     data: null, // No data to send
   });
 });

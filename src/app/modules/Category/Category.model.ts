@@ -7,12 +7,6 @@ const CategorySchema = new Schema<ICategory>(
   {
     id: { type: String, unique: true }, // Derived from `_id`
     name: { type: String, required: true, unique: true },
-    description: { type: String, required: true },
-    parentCategoryId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "ParentCategory",
-      required: true,
-    },
     image: { type: String, required: true },
     slug: { type: String, unique: true },
   },

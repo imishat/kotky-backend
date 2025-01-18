@@ -4,17 +4,16 @@ import slugify from "slugify";
 
 const ProductSchema = new Schema<IProduct>(
   {
-    barcode: { type: String, required: true },
     slug: { type: String, required: false },
     name: { type: String, required: true },
-    color: [
+    price: [
       {
-        colorName: { type: String, required: true },
-        hex: { type: String, required: true },
+        weight: { type: String, required: true },
+        price: { type: String, required: true },
         availableQuantity: { type: Number, required: true },
       },
     ],
-    originalPrice: { type: Number, required: true },
+
     discountedPrice: { type: Number, required: true },
     inStock: { type: Boolean, required: true, default: false },
     onSale: { type: Boolean, required: true, default: false },
@@ -23,31 +22,17 @@ const ProductSchema = new Schema<IProduct>(
       ref: "Category",
       required: true,
     },
-    parentCategoryId: {
-      type: mongoose.Schema.ObjectId,
-      ref: "ParentCategory",
-      required: true,
-    },
+
     imageDefault: { type: String, required: true },
     imageHover: { type: String, required: true },
     additionalDetails: [
       {
-        color: { type: String, required: true },
-        hex: { type: String, required: true },
+        color: { type: String },
+        hex: { type: String },
         quantity: { type: Number, required: true },
         images: [{ type: String, required: true }],
       },
     ],
-    productDetails: {
-      additionalProductDetails: { type: Schema.Types.Mixed, required: true },
-      size: [{ type: Map, of: String, required: true }],
-      warranty: { type: String, required: true },
-    },
-
-    leather: {
-      image: { type: String, required: false },
-      title: { type: [String], required: false },
-    },
   },
   { timestamps: true }
 );

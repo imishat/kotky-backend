@@ -109,6 +109,7 @@ const getAll = async (
       slug: 1,
       originalPrice: 1,
       discountedPrice: 1,
+      price: 1,
     });
 
   const total = await Product.countDocuments(whereConditions);
